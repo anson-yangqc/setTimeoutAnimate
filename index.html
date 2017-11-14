@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		*{margin:0;padding:0;box-sizing:border-box;}
+		ul{list-style:none;width:100px;}
+		li{height:30px;border:1px solid #000;background:rgba(211,2,155,.4);text-align:right;}
+	</style>
+	<ul>
+		<li>one</li>
+		<li>one</li>
+		<li>one</li>
+		<li>one</li>
+		<li>one</li>
+		<li>one</li>
+		<li>one</li>
+		<li>one</li>
+	</ul>	
+	<script type="text/javascript">
+		const move = {
+			init(option){
+				this.datas(option);
+				this.setStyle();
+				this.bind();
+			},
+			datas(option){
+				this.lis = option.obj;
+			},
+			setStyle(){
+				this.lis.forEach((li,index,lis)=>{
+					li.style.transform = 'translate(-60%,0)';
+					li.style.transition = 'all .7s';
+				})
+			},
+			bind(){
+				this.lis.forEach((li,index,lis)=>{
+					li.onmouseover = ()=>{
+						li.style.transform = 'translate(0px,0)';
+						this.lis.forEach((li,index,lis)=>{
+							setTimeout(()=>{
+								li.style.transform = 'translate(0px,0)';
+							},70 * index)
+						})
+					}
+					li.onmouseout = ()=>{
+						li.style.transform = 'translate(-60%,0)';
+						this.lis.forEach((li,index,lis)=>{
+							setTimeout(()=>{
+								li.style.transform = 'translate(-60%,0)';
+							},70 * index)
+						})
+					}
+				})
+			}
+		}
+		move.init({
+			obj:document.querySelectorAll('li')
+		});
+	</script>
+</body>
+</html>
