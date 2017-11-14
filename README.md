@@ -1,2 +1,2 @@
 # setTimeoutAnimate
-定时器导航动画
+# 注意 setTimeout的时间传值问题；
